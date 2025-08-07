@@ -9,6 +9,7 @@ import (
 	"github.com/kuroshi7/go-pay/internal/service"
 	"github.com/kuroshi7/go-pay/internal/web/server"
 	"github.com/joho/godotenv"
+	_ "github.com/lib/pq" // PostgreSQL driver
 )
 
 func getEnv(key, defaultValue string) string {
