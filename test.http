@@ -8,9 +8,49 @@ Content-Type: application/json
 
 {
     "name": "John Doe",
-    "email": "john@doe.com"
+    "email": "john@doe6.com"
 }
     
+##  Get Accounts
 
 GET {{baseUrl}}/accounts
 X-API-Key: {{apiKey}}
+
+### Create Invoice
+
+# @name createInvoice 
+POST {{baseUrl}}/invoices
+Content-Type: application/json
+X-API-Key: {{apiKey}}
+
+{
+    "amount": 100,
+    "description": "Invoice for services rendered",
+    "payment_type": "credit_card",
+    "card_number": "4111111111111111",
+    "cvv": "123",
+    "expiry_month": 12,
+    "expiry_year": 2025,
+    "cardholder_name": "John Doe"
+}
+
+### Get Invoice by ID
+@invoiceId = {{createInvoice.response.body.id}}
+GET {{baseUrl}}/invoices/{{invoiceId}}
+X-API-Key: {{apiKey}}
+
+### invoice value >10000
+POST {{baseUrl}}/invoices
+Content-Type: application/json
+X-API-Key: {{apiKey}}
+
+{
+    "amount": 15000,
+    "description": "Invoice for services rendered",
+    "payment_type": "credit_card",
+    "card_number": "4111111111111111",
+    "cvv": "123",
+    "expiry_month": 12,
+    "expiry_year": 2025,
+    "cardholder_name": "John Doe"
+}
